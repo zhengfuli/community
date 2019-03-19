@@ -1,0 +1,4 @@
+income    zipcodes
+~~~~~
+33121
+~~~~~

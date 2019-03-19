@@ -1,0 +1,78 @@
+-- To run: sqlite3 crime.db < crime.SQL.txt > crime.OUT.txt
+
+-- Setup
+.headers on
+.separator ','
+
+DROP TABLE IF EXISTS crime;
+drop table if exists zipcodes;
+drop view if exists combine_zipcode;
+
+
+-- ***** ***** ***** ***** ***** ***** ***** ***** ***** ***** --
+
+-- (a.i) Create tables
+
+CREATE table crime
+(
+	id int,
+	name varchar(255),
+	city varchar(255),
+	region varchar(255),
+	zip int
+);
+
+CREATE table zipcodes
+(
+	 GEOID int,
+	 ALAND	int,
+	 AWATER int,
+	 ALAND_SQMI	int,
+	 AWATER_SQMI int,
+	 latitude int,
+	 longitude int  
+);
+
+
+--import csv to naics table
+.mode csv
+--.import ./2017/FBI/Data%20;Tables/Table_10_Offenses_Known_to_Law_Enforcement_by_State_by_Metropolitan_and_Nonmetropolitan_Counties_2017 crime
+
+sqlitebiter -o sample.sqlite file *
+[INFO] sqlitebiter file: convert './2017/FBI/Data%20;Tables/Table_10_Offenses_Known_to_Law_Enforcement_by_State_by_Metropolitan_and_Nonmetropolitan_Counties_2017.xlsx' to 'crime' table
+
+-- Display table info
+.tables
+.print '~~~~~'
+
+-- This is tab deliminited.
+.mode csv
+.import ../../zipcodes/2018_Gaz_zcta_national.csv zipcodes
+
+.headers off
+SELECT COUNT(*) as totalRows FROM crime;
+.headers on
+.print '~~~~~'
+
+CREATE INDEX zip_index ON crime (zip);
+create index GEOID_index on zipcodes(GEOID); -- The zip code
+
+
+
+--combine zipcode
+
+Create view combine_zipcode
+as 
+select crime.*, zipcodes.latitude, zipcodes.longitude
+from crime 
+inner join zipcodes  
+on crime.zip=zipcodes.GEOID;
+
+
+--convert to csv
+.mode csv
+.output crime_out.csv
+select * from combine_zipcode;
+.output stdout
+
+

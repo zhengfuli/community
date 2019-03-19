@@ -1,0 +1,229 @@
+<html><head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>DataScape: Resources</title>
+  <link rel="shortcut icon" href="data:image/x-icon;," type="image/x-icon"> 
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.1.js"></script>
+  <script type="text/javascript" src="../js/showdown.min.js"></script>
+
+
+  <style id="compiled-css" type="text/css">
+  h1 {
+    font-weight: 200;
+    font-size: 28pt;
+    margin-block-start: 0em;
+  }
+  h3 {
+    margin-top: 20px;
+  }
+  body {
+    margin:0px;
+    background: #fff;
+    font-size: 12px;
+    font-family: 'Lato', sans-serif;
+  }
+  iframe {
+    display: block;       /* iframes are inline by default */
+    backgroundX: #000;
+    border: none;         /* Reset default border */
+    min-height: 95vh;        /* Viewport-relative units */
+    width: 100%;
+  }
+  #header {
+    height: 70px;
+    background-colorX: #ccc;
+    border-bottomX: 1px solid #888;
+  }
+  .headerRect {
+    width: 25%;
+    height: 100%;
+    border-right: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+    border-top: 0px solid #fff;
+    float: left;
+    padding: 20px;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 200;
+    box-sizing: border-box;
+  }
+  .headerRect:hover {
+    background-color: #ddd;
+  }
+  .arrowdown {
+    width: 0; 
+    height: 0; 
+    border-left: 6px solid transparent;
+    border-right: 6px solid transparent;
+    border-top: 6px solid #000;
+    margin:4px;
+    float: right;
+  }
+
+  #resizable {
+    position: relative;
+    width: 25%;
+    background: #fff;
+    float:left;
+    overflow:hidden;
+  }
+  #resizer {
+    position: absolute;
+    width: 6px;
+    top: 30px;
+    bottom: 30px;
+    right: -3px;
+    background: orange;
+    background: #ddd;
+    background: #fff;
+    opacity: .5;
+    cursor: ew-resize;
+  }
+  #mainarea {
+    overflow: hidden;
+    min-height: 100vh; 
+    margin: 50px;
+    margin: 0px;
+    position: relative;
+  }
+  #mainarea iframe {
+    background: #efefef;
+    border: 1px solid #ddd;
+  }
+  .sideBySide {
+    float:left;
+    padding-right:50px;
+    padding-bottom:30px;
+  }
+
+  @media (max-width: 600px) {
+    #header {
+      display:none;
+    }
+  }
+  @media (max-width: 800px) {
+    #resizable {
+      width: 100%;
+    }
+    #mainarea {
+      width: 85%;
+      padding:0px;
+      padding-right:20px;
+    }
+  }
+  </style>
+
+
+<script type="text/javascript">
+window.onload=function(){
+  
+var resizable = d3.select('#resizable');
+var resizer = d3.select('#resizer');
+var iframe = d3.select('.iframe');
+
+// To investigate further:
+// window.addEventListener("touchstart", func, {passive: true} );
+// Console warning message occurs in Chrome mobile view: Using passive event handlers #35
+// https://github.com/d3/d3-drag/issues/35
+
+var dragResize = d3.behavior.drag()
+.on('drag', function() {
+  // Determine resizer position relative to resizable (parent)
+  x = d3.mouse(this.parentNode)[0];
+
+  // Avoid negative or really small widths
+  x = Math.max(50, x);
+
+  resizable.style('width', x + 'px');
+
+  iframe.style('pointer-events','none');
+  consoleLog('resizinc2');
+  
+})
+.on('dragend', function() {
+  iframe.style('pointer-events','auto');
+  consoleLog('done');
+})
+
+resizer.call(dragResize);
+
+}
+
+function consoleLog(text)
+{
+    console.log(text);
+}
+
+
+
+    // tell the embed parent frame the height of the content
+    /*
+    if (window.parent && window.parent.parent){
+      window.parent.parent.postMessage(["resultsFrame", {
+        height: document.body.getBoundingClientRect()e.height,
+        slug: "e38bLdjk"
+      }], "*")
+    }
+    */
+
+
+loadMarkupPage("resources.md", "topicsDiv", "_parent");
+
+var url = "marvel/index.html";
+window.onclick = function(e) { 
+  //alert("e.target.target " + e.target.target + " e.target " + e.target);
+  if (e.target.target == "mainframe") {
+    url = e.target; // Might place in a cookie for backing up. Then _blank can be switched to _parent
+    document.getElementById("iframeInTab").href = url;
+  }
+};
+
+function loadMarkupPage(pagePath, divID, target) {
+    d3.text(pagePath, function(data) {
+      var converter = new showdown.Converter(),
+      html = converter.makeHtml(data);
+      document.getElementById(divID).innerHTML = html;
+
+      //setTimeout(function(){ 
+        var elems = document.getElementById(divID).getElementsByTagName('a');
+        for (var i = 0; i < elems.length; i++) {
+          // <!--target seems to be encrypted
+          if (elems[i].text.includes("Concept") || elems[i].text.includes("American") || elems[i].text.includes("Additional") 
+            || elems[i].text.includes("Google") || elems[i].text.includes("GitHub") || elems[i].text.includes("Brain")) {
+            //alert('here')
+            elems[i].setAttribute('target', "_blank");
+          } else {
+            elems[i].setAttribute('target', target);
+          }
+        }
+      //}, 1000);
+    });
+}
+
+
+function viewInTab() {
+  //alert(url)
+   //url = document.getElementById('mainframe').src;
+   window.location.href = url;
+ }
+</script>
+
+
+</head>
+
+
+<body>
+
+
+<div style="border-top: 1px solid #ccc; padding:40px; background:#fcfcfc; clear:both; overflow: auto;">
+
+  <div id="topicsDiv" class="sideBySide" style="border-left:1px solid #fff; max-width:400px"></div>
+</div>
+
+
+
+
+</body>
+</html>

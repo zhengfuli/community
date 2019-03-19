@@ -1,0 +1,306 @@
+<html><head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>DataScape: Community Forecasting</title>
+  <link rel="shortcut icon" href="data:image/x-icon;," type="image/x-icon"> 
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <script type="text/javascript" src="js/showdown.min.js"></script>
+  
+
+<!--
+http://visjs.org/showcase/index.html
+
+https://www.highcharts.com
+
+Elastic.co has a free Basic plan
+https://www.elastic.co/subscriptions
+
+  Font experiments
+
+  <link id="//fonts.googleapis.com/css?family=Open+Sans+Condensed:700,300" rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Open+Sans+Condensed:700,300" media="all">
+
+  <link rel='stylesheet' id='googlefont-css' href='//fonts.googleapis.com/css?family=Rokkitt%3A400%2C700%7CRoboto+Condensed%3A400italic%2C700italic%2C400%2C700&#038;ver=4.7.5' type='text/css' media='all' />
+
+  <link href="https://fonts.googleapis.com/css?family=Lato|Open+Sans+Condensed:700,300" rel="stylesheet">
+
+    font-familyX: "Roboto Condensed"; /* Ugh, try just Roboto */
+    font-familyX: 'Roboto', sans-serif;
+    font-familyX: "Open Sans Condensed"; /* Also try Open Sans Light
+    font-familyX: '',  Light, Lato, sans-serif;
+    /* Open Sans Light,  */
+-->
+
+<!--
+  <script type="text/javascript" src="lib/d3.v5.min.js"></script>
+-->
+  <script type="text/javascript" src="//d3js.org/d3.v3.js"></script>
+
+  <style id="compiled-css" type="text/css">
+  h1 {
+    font-weight: 200;
+    font-size: 28pt;
+    margin-block-start: 0em;
+  }
+  h3 {
+    margin-top: 20px;
+  }
+  body {
+    margin:0px;
+    background: #fff;
+    font-size: 12px;
+    font-family: 'Lato', sans-serif;
+  }
+  iframe {
+    display: block;       /* iframes are inline by default */
+    backgroundX: #000;
+    border: none;         /* Reset default border */
+    min-height: 95vh;        /* Viewport-relative units */
+    width: 100%;
+  }
+  #header {
+    height: 70px;
+    background-colorX: #ccc;
+    border-bottomX: 1px solid #888;
+  }
+  .headerRect {
+    width: 25%;
+    height: 100%;
+    border-right: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+    border-top: 0px solid #fff;
+    float: left;
+    padding: 20px;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 200;
+    box-sizing: border-box;
+  }
+  .headerRect:hover {
+    background-color: #ddd;
+  }
+  .arrowdown {
+    width: 0; 
+    height: 0; 
+    border-left: 6px solid transparent;
+    border-right: 6px solid transparent;
+    border-top: 6px solid #000;
+    margin:4px;
+    float: right;
+  }
+
+  #resizable {
+    position: relative;
+    width: 25%;
+    background: #fff;
+    float:left;
+    overflow:hidden;
+  }
+  #resizer {
+    position: absolute;
+    width: 6px;
+    top: 30px;
+    bottom: 30px;
+    right: -3px;
+    background: orange;
+    background: #ddd;
+    background: #fff;
+    opacity: .5;
+    cursor: ew-resize;
+  }
+  #mainarea {
+    overflow: hidden;
+    min-height: 100vh; 
+    margin: 50px;
+    margin: 0px;
+    position: relative;
+  }
+  #mainarea iframe {
+    background: #efefef;
+    border: 1px solid #ddd;
+  }
+  .sideBySide {
+    float:left;
+    padding-right:50px;
+    padding-bottom:30px;
+  }
+
+  @media (max-width: 600px) {
+    #header {
+      display:none;
+    }
+  }
+  @media (max-width: 800px) {
+    #resizable {
+      width: 100%;
+    }
+    #mainarea {
+      width: 85%;
+      padding:0px;
+      padding-right:20px;
+    }
+  }
+  </style>
+
+
+<script type="text/javascript">
+window.onload=function(){
+  
+var resizable = d3.select('#resizable');
+var resizer = d3.select('#resizer');
+var iframe = d3.select('.iframe');
+
+// To investigate further:
+// window.addEventListener("touchstart", func, {passive: true} );
+// Console warning message occurs in Chrome mobile view: Using passive event handlers #35
+// https://github.com/d3/d3-drag/issues/35
+
+var dragResize = d3.behavior.drag()
+.on('drag', function() {
+  // Determine resizer position relative to resizable (parent)
+  x = d3.mouse(this.parentNode)[0];
+
+  // Avoid negative or really small widths
+  x = Math.max(50, x);
+
+  resizable.style('width', x + 'px');
+
+  iframe.style('pointer-events','none');
+  consoleLog('resizinc2');
+  
+})
+.on('dragend', function() {
+  iframe.style('pointer-events','auto');
+  consoleLog('done');
+})
+
+resizer.call(dragResize);
+
+}
+
+function consoleLog(text)
+{
+    console.log(text);
+}
+
+
+
+    // tell the embed parent frame the height of the content
+    /*
+    if (window.parent && window.parent.parent){
+      window.parent.parent.postMessage(["resultsFrame", {
+        height: document.body.getBoundingClientRect()e.height,
+        slug: "e38bLdjk"
+      }], "*")
+    }
+    */
+
+
+loadMarkupPage("intro.md", "introDiv", "_parent");
+loadMarkupPage("resources/resources.md", "resourcesDiv", "mainframe");
+
+var url = "marvel/index.html";
+window.onclick = function(e) { 
+  //alert("e.target.target " + e.target.target + " e.target " + e.target);
+  if (e.target.target == "mainframe") {
+    url = e.target; // Might place in a cookie for backing up. Then _blank can be switched to _parent
+    document.getElementById("iframeInTab").href = url;
+  }
+};
+
+function loadMarkupPage(pagePath, divID, target) {
+    d3.text(pagePath, function(data) {
+      var converter = new showdown.Converter(),
+      html = converter.makeHtml(data);
+      document.getElementById(divID).innerHTML = html;
+
+      //setTimeout(function(){ 
+        var elems = document.getElementById(divID).getElementsByTagName('a');
+        for (var i = 0; i < elems.length; i++) {
+          // <!--target seems to be encrypted
+          if (elems[i].text.includes("Concept") || elems[i].text.includes("American") || elems[i].text.includes("Additional") 
+            || elems[i].text.includes("Google") || elems[i].text.includes("GitHub") || elems[i].text.includes("Brain")) {
+            //alert('here')
+            elems[i].setAttribute('target', "_blank");
+          } else {
+            elems[i].setAttribute('target', target);
+          }
+        }
+      //}, 1000);
+    });
+}
+
+
+function viewInTab() {
+  //alert(url)
+   //url = document.getElementById('mainframe').src;
+   window.location.href = url;
+ }
+</script>
+
+
+</head>
+
+
+<body>
+
+<div id="header">
+  <div class="headerRect"><b>Location</b> <div class="arrowdown"></div>
+  <br>Southeast, USA
+  </div>
+
+
+  <div class="headerRect"><b>Industries</b><div class="arrowdown"></div>
+  <br>NAICS Category Filters
+  </div>
+  
+  <div class="headerRect"><b>Economic Indicators</b><div class="arrowdown"></div>
+  <br>Income, Education, Safety, Employment
+  </div>
+
+  <div class="headerRect" style="display:none"><b>Topics</b> (themes)<div class="arrowdown"></div>
+  <br>[NAICS Indusrty Area]<!--Infrastructure, Material Flow-->
+  </div>
+  
+  <div class="headerRect" style="display:none"><b>Categories</b> (and clusters)<div class="arrowdown"></div>
+  <br>[Specific Industries]<!--Collaborative Networks-->
+  </div>
+
+
+  <div class="headerRect"><b>Output Results</b> <div class="arrowdown"></div>
+  <br>
+  Volunteer Rewards Campaign
+  <!--Identify cities for 5 manufacturing facilities--><!--Timeframe January to April 2019--></div>
+</div>
+
+<div id="resizable">
+  <div id="introDiv" style="margin:40px"></div>
+  <div id="resourcesDiv" style="margin:40px"></div>
+  <div id="resizer"></div>
+</div>
+
+<div id="mainarea">
+  <iframe src="map/index.html" class="iframe" name="mainframe" id="mainframe"></iframe><br>
+  <div style="position:absolute; bottom:0px">
+    <!--
+    Embedded content. Scroll within iFrame above.
+    -->
+    <a href="map/" id="iframeInTab">Expand</a>
+    <br><br>
+
+    <!--
+     or <a href="" class="opentab">view in new tab</a>.
+      -->
+  </div>
+</div>
+
+<div style="border-top: 1px solid #ccc; padding:40px; background:#fcfcfc; clear:both; overflow: auto;">
+
+  <!-- not currently used -->
+  <div id="topicsDiv" class="sideBySide" style="border-left:1px solid #fff; max-width:400px"></div>
+</div>
+
+
+
+</body>
+</html>
