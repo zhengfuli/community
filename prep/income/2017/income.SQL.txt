@@ -18,7 +18,7 @@ drop view if exists combine_zipcode;
 CREATE table income
 (
 	id int,
-	id2 int,
+	zcta int,
 	geography varchar(255), 
 	housecount int,
 	E varchar(255),
@@ -150,9 +150,7 @@ CREATE table income
 	DW varchar(255),
 	DX varchar(255),
 	DY varchar(255),
-	DZ varchar(255),
-
-	zcta int
+	DZ varchar(255)
 );
 -- zip get populated with int parsed from the ZCTA5 "geography" column.
 
@@ -201,7 +199,7 @@ SELECT COUNT(*) as totalRows FROM income;
 .print '~~~~~'
 
 
-UPDATE income SET zip = CAST(substr(geography,7,5) as decimal);
+UPDATE income SET zcta = CAST(substr(geography,7,5) as decimal);
 
 
 --CREATE INDEX zip_index on income (zip);
@@ -210,19 +208,23 @@ create index GEOID_index on zipcodes(GEOID); -- The zip code
 
 
 --combine zipcode
+-- Additional income columns, omitted to reduce file size
+-- income.HouseMeanIncome, income.House25to35K, income.House35to50K, income.House50to75K, income.House75to100K, income.House100to150K, income.House150to200K, income.House200Kup
 
 Create view combine_zipcode
 as 
-select income.housecount intensity, zipcodes.latitude, zipcodes.longitude
+select income.housecount intensity, zipcodes.latitude, zipcodes.longitude,
+income.HouseMedianIncome, income.House0to10K, income.House10to15K, income.House15to25K
+
 from income 
 left join zipcw
- on orgs.zcta=zipcw.zcta
+ on income.zcta=zipcw.zcta
 left join zipcodes  
  on zipcw.zip=zipcodes.GEOID
 
 --and income.housecount < 1200
---and income.FamilyMeanIncome < 25000 -- 7155 results, but why just north side of Atlanta?
-and income.PercentFamilies0to10K > 30 -- 9354 results
+and income.FamilyMeanIncome < 25000 -- 7155 results, but why just north side of Atlanta?
+--and income.Families0to10K > 30 -- 9354 results
 --and income.zip >= 30000 and income.zip < 31000
 ;
 
