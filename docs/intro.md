@@ -14,7 +14,7 @@
 https://docs.google.com/presentation/d/1WMd5GCYD-pnKDqdGE6GYtM3M-bjNRXgqVBTCzi7Plmg/edit?ts=5c7af7b9#slide=id.p
 -->
 
-[20% Population below Fed Poverty Level](about/levels)  
+[20% below Poverty Level for 30+ Years](about/levels)  
 
 ### Javascript Clustering
 
