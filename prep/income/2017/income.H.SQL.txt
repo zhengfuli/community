@@ -283,6 +283,7 @@ from income
 inner join industries
  on industries.naics="------";
 
+DROP TABLE IF EXISTS income;
 --convert to csv
 .mode csv
 .output industries_join_income.csv
@@ -290,4 +291,4 @@ select * from ind_join_income
  ;
 .output stdout
 
-DROP TABLE IF EXISTS income;
+
