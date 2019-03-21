@@ -1,4 +1,4 @@
-### Machine Learning for 
+#### Machine Learning for 
 # Community Forecasting
 
 <!--
@@ -15,8 +15,9 @@ https://docs.google.com/presentation/d/1WMd5GCYD-pnKDqdGE6GYtM3M-bjNRXgqVBTCzi7P
 -->
 
 [20% below Poverty Level for 30+ Years](about/levels)  
+<br>
 
-### Javascript Clustering
+#### Javascript Clustering
 
 [Visualizing DBSCAN Clustering](https://www.naftaliharris.com/blog/visualizing-dbscan-clustering/)  
 
