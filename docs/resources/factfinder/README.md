@@ -32,7 +32,7 @@ The following [FactFinder export steps are by Mike Bostock](https://bost.ocks.or
 <b>Choose one of these (seems to be limit to one download set at a time.)</b>  
 S1901 - Income  
 B02001 - Race  
-S0101 - Age and Sex (optional)
+S0101 - Age and Sex
 
 The income dataset contains over 100 types of income.  
 Our 19.5 MB income source file resides at [prep/income/2017/aff_download/ACS_17_5YR_S1901_with_ann.csv](../../../prep/income/2017/aff_download/ACS_17_5YR_S1901_with_ann.csv)

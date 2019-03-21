@@ -6,7 +6,7 @@ sqlite3 industry.db < industry.SQL.txt > industry.OUT.txt
 
 ### Data Sources
 
-[Census.gov - US zips to NAICS industry sectors](https://census.gov/programs-surveys/cbp.html) 321Mb  
+[Census.gov - US zips to NAICS industry sectors](https://www.census.gov/data/developers/data-sets/cbp-nonemp-zbp/zbp-api.html)  
 Companies per industry within each zipcode  
 
 [NAICS to ISIC](https://www.census.gov/eos/www/naics/concordances/concordances.html) -
