@@ -1,6 +1,6 @@
 #FactFinder
 
-The following [FactFinder export steps are by Mike Bostocks](https://bost.ocks.org/mike/bubble-map/)  
+The following [FactFinder export steps are by Mike Bostock](https://bost.ocks.org/mike/bubble-map/)  
 
 1. Go to factfinder2.census.gov.  
 2. Find where it says “American Community Survey” and click “get data »”.  
