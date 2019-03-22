@@ -239,6 +239,7 @@ Create view zc
 as 
 select zipcw.zcta, income.housecount HouseCount, 
 income.HouseMedianIncome, income.House0to10K, income.House10to15K, income.House15to25K,
+income.House100to150K, income.House150to200K, income.House200Kup,
 zctazip.latitude, zctazip.longitude
 
 from zipcw
@@ -256,18 +257,17 @@ left join income on zipcw.zcta = income.zcta;
 
 Create view zcta_output
 as 
-select zc.zcta, zc.HouseCount, 
-zc.HouseMedianIncome, (zc.House0to10K + zc.House10to15K + zc.House15to25K) under25K, 
-(zc.House100to150K + zc.House150to200K + zc.House200Kup) over100K,
-sum(industries.est) JobCount
+select zc.zcta, zc.HouseCount, zc.HouseMedianIncome, 
+(zc.House0to10K + zc.House10to15K + zc.House15to25K) IncomeUnder25K, 
+(zc.House100to150K + zc.House150to200K + zc.House200Kup) IncomeOver100K,
+sum(industries.est) JobCount, zc.latitude, zc.longitude
 
 from zc
 left join zipcw on zc.zcta = zipcw.zcta -- one-to-many
 join industries on zipcw.zip = industries.zip and industries.naics="------"
 
-group by zc.zcta, zc.HouseCount, zc.House0to10K, zc.House10to15K, zc.House15to25K, zc.House100to150K, zc.House150to200K, zc.House200Kup
-
-zc.HouseMedianIncome;
+group by zc.zcta, zc.HouseCount, zc.HouseMedianIncome, zc.House0to10K, zc.House10to15K, zc.House15to25K, 
+zc.House100to150K, zc.House150to200K, zc.House200Kup;
 
 --convert to csv
 .mode csv
