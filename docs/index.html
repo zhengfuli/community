@@ -8,36 +8,39 @@
   <script type="text/javascript" src="js/showdown.min.js"></script>
   
 
-<!--
-http://visjs.org/showcase/index.html
+  <!--
+  http://visjs.org/showcase/index.html
 
-https://www.highcharts.com
+  https://www.highcharts.com
 
-Elastic.co has a free Basic plan
-https://www.elastic.co/subscriptions
+  Elastic.co has a free Basic plan
+  https://www.elastic.co/subscriptions
 
-  Font experiments
+    Font experiments
 
-  <link id="//fonts.googleapis.com/css?family=Open+Sans+Condensed:700,300" rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Open+Sans+Condensed:700,300" media="all">
+    <link id="//fonts.googleapis.com/css?family=Open+Sans+Condensed:700,300" rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Open+Sans+Condensed:700,300" media="all">
 
-  <link rel='stylesheet' id='googlefont-css' href='//fonts.googleapis.com/css?family=Rokkitt%3A400%2C700%7CRoboto+Condensed%3A400italic%2C700italic%2C400%2C700&#038;ver=4.7.5' type='text/css' media='all' />
+    <link rel='stylesheet' id='googlefont-css' href='//fonts.googleapis.com/css?family=Rokkitt%3A400%2C700%7CRoboto+Condensed%3A400italic%2C700italic%2C400%2C700&#038;ver=4.7.5' type='text/css' media='all' />
 
-  <link href="https://fonts.googleapis.com/css?family=Lato|Open+Sans+Condensed:700,300" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Lato|Open+Sans+Condensed:700,300" rel="stylesheet">
 
-    font-familyX: "Roboto Condensed"; /* Ugh, try just Roboto */
-    font-familyX: 'Roboto', sans-serif;
-    font-familyX: "Open Sans Condensed"; /* Also try Open Sans Light
-    font-familyX: '',  Light, Lato, sans-serif;
-    /* Open Sans Light,  */
--->
+      font-familyX: "Roboto Condensed"; /* Ugh, try just Roboto */
+      font-familyX: 'Roboto', sans-serif;
+      font-familyX: "Open Sans Condensed"; /* Also try Open Sans Light
+      font-familyX: '',  Light, Lato, sans-serif;
+      /* Open Sans Light,  */
+  -->
 
-<!--
-<script type="text/javascript" src="lib/d3.v5.min.js"></script>
--->
-<script type="text/javascript" src="//d3js.org/d3.v3.js"></script>
+  <!-- prevents please.js error -->
+  <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.1.js"></script>
 
-<link rel="stylesheet" href="css/community.css" />
-
+  <!--
+  <script type="text/javascript" src="lib/d3.v5.min.js"></script>
+  -->
+  <script type="text/javascript" src="//d3js.org/d3.v3.js"></script>
+  <script type="text/javascript" src="js/nouislider.min.js"></script>
+  <link rel="stylesheet" href="css/community.css" />
+  <link rel="stylesheet" href="css/nouislider.min.css" />
 
 <script type="text/javascript">
 window.onload=function(){
@@ -92,7 +95,7 @@ function consoleLog(text)
     */
 
 
-loadMarkupPage("intro.md", "introDiv", "_parent");
+loadMarkupPage("intro.md", "introDiv", "mainframe");
 loadMarkupPage("resources/resources.md", "resourcesDiv", "mainframe");
 
 var url = "marvel/index.html";
@@ -115,7 +118,7 @@ function loadMarkupPage(pagePath, divID, target) {
         for (var i = 0; i < elems.length; i++) {
           // <!--target seems to be encrypted
           if (elems[i].text.includes("Concept") || elems[i].text.includes("American") || elems[i].text.includes("Additional") 
-            || elems[i].text.includes("Google") || elems[i].text.includes("GitHub") || elems[i].text.includes("Brain")) {
+            || elems[i].text.includes("Google") || elems[i].text.includes("GitHub") || elems[i].text.includes("Brain") || elems[i].text.includes("GPU.js") || elems[i].text.includes("11 JavaScript")) {
             //alert('here')
             elems[i].setAttribute('target', "_blank");
           } else {
@@ -132,9 +135,60 @@ function viewInTab() {
    //url = document.getElementById('mainframe').src;
    window.location.href = url;
  }
+
+
+
+
+document.addEventListener("DOMContentLoaded", function(event) { 
+   
+    // Slider: https://refreshless.com/nouislider/
+    // Also dot style: https://jsfiddle.net/leongersen/9hyfv0bw/11/
+
+    // Also see: Preact Slider https://codepen.io/avol/pen/LyovJb
+
+    var pipsSlider = document.getElementById('slider-pips');
+
+    noUiSlider.create(pipsSlider, {
+        range: {
+            min: 2011,
+            max: 2020
+        },
+        start: [2017],
+        pips: {mode: 'count', values: 4}
+    });
+
+    var pips = pipsSlider.querySelectorAll('.noUi-value');
+
+    function clickOnPip() {
+        var value = Number(this.getAttribute('data-value'));
+        pipsSlider.noUiSlider.set(value);
+    }
+
+    for (var i = 0; i < pips.length; i++) {
+
+        // For this example. Do this in CSS!
+        pips[i].style.cursor = 'pointer';
+        pips[i].addEventListener('click', clickOnPip);
+    }
+});
+
 </script>
 
+<style>
+  h4 {
+    margin-bottom: 0px;
+  }
 
+  /* Reduce default height of pipsSlider marker */
+  .noUi-marker-horizontal.noUi-marker-large {
+    height: 10px;
+    opacity: .8;
+    margin-top: -4px;
+  }
+  .noUi-marker-normal {
+    display:none;
+  }
+</style>
 </head>
 
 
@@ -151,7 +205,7 @@ function viewInTab() {
   </div>
   
   <div class="headerRect"><b>Economic Indicators</b><div class="arrowdown"></div>
-  <br>Income, Education, Safety, Employment
+  <br>Income, Education, Employment
   </div>
 
   <div class="headerRect" style="display:none"><b>Topics</b> (themes)<div class="arrowdown"></div>
@@ -172,6 +226,9 @@ function viewInTab() {
 <div id="resizable">
   <div id="introDiv" style="margin:40px"></div>
   <div id="resourcesDiv" style="margin:40px"></div>
+
+  <div id="slider-pips" style="max-width:200px;margin-left:50px;margin-right:20px"></div><br><br>
+
   <div id="resizer"></div>
 </div>
 

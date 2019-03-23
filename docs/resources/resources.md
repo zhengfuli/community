@@ -1,8 +1,10 @@
 
 ##Data Resources
 
-[CensusReporter.org](https://censusreporter.org)  
-Eminently more usable than FactFinder according to Mike Bostock, creator of D3.js ([Details/Bubblemap](https://bost.ocks.org/mike/bubble-map/)). FactFinder notes reside in <a href="../prep/income/">prep/income</a>.
+[US Census FactFinder](resources/factfinder/)  
+
+[CensusReporter.org](https://censusreporter.org)<!--
+Eminently more usable than FactFinder according to Mike Bostock, creator of D3.js ([Details/Bubblemap](https://bost.ocks.org/mike/bubble-map/)).-->  
 
 [DiffBot Knowledge Graph](https://app.diffbot.com/search/)  
 

@@ -1,4 +1,4 @@
-### Machine Learning for 
+#### Machine Learning for 
 # Community Forecasting
 
 <!--
@@ -15,8 +15,9 @@ https://docs.google.com/presentation/d/1WMd5GCYD-pnKDqdGE6GYtM3M-bjNRXgqVBTCzi7P
 -->
 
 [20% below Poverty Level for 30+ Years](about/levels)  
+<br>
 
-### Javascript Clustering
+#### Javascript Clustering
 
 [Visualizing DBSCAN Clustering](https://www.naftaliharris.com/blog/visualizing-dbscan-clustering/)  
 
@@ -25,9 +26,10 @@ Displays the most notable attribute in each cluster to narrow preferences.
 
 [GPU.js - Kind of fun to do the impossible](https://hackernoon.com/introducing-gpu-js-gpu-accelerated-javascript-ba11a6069327)  
 
-[11 JavaScript Machine Learning Languages](https://blog.bitsrc.io/11-javascript-machine-learning-libraries-to-use-in-your-app-c49772cca46c)  
 
 <!--
+[11 JavaScript Machine Learning Languages](https://blog.bitsrc.io/11-javascript-machine-learning-libraries-to-use-in-your-app-c49772cca46c)  
+
 [Training GANs using Google Colaboratory](https://towardsdatascience.com/training-gans-using-google-colaboratory-f91d4e6f61fe)  
 -->
 
