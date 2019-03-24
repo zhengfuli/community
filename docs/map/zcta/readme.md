@@ -7,5 +7,3 @@
 	https://mapshaper.org/
 
 
-	<script src="https://embed.github.com/view/geojson/datascape/community/master/docs/map/zcta/zcta_sm.topo.json"></script>
-
