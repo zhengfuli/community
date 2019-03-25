@@ -12,7 +12,11 @@ const m0 = {
       value: (function(md){return(
 md`# Quantile Choropleth
 
-Unemployment rate by county, August 2016. Data: [Bureau of Labor Statistics](http://www.bls.gov/lau/#tables).`
+Unemployment rate by county, August 2016. Data: [Bureau of Labor Statistics](http://www.bls.gov/lau/#tables).
+
+
+Search for "CUSTOM" for three place to change to zcta. Copy existing csv files local and add zcta values.
+`
 )})
     },
     {
@@ -32,10 +36,10 @@ Unemployment rate by county, August 2016. Data: [Bureau of Labor Statistics](htt
       .attr("transform", "translate(600,40)")
       .call(legend);
 
-  // zcta or Georgia was counties
+  // CUSTOM change "counties" to zcta or Georgia.
   svg.append("g")
     .selectAll("path")
-    .data(topojson.feature(us, us.objects.Gerogia).features)
+    .data(topojson.feature(us, us.objects.counties).features)
     .join("path")
       .attr("fill", d => color(data.get(d.id)))
       .attr("d", path)
@@ -85,8 +89,9 @@ g => {
       name: "data",
       inputs: ["d3"],
       value: (async function(d3){return(
-//Object.assign(new Map(await d3.csv("https://gist.githubusercontent.com/mbostock/682b782da9e1448e6eaac00bb3d3cd9d/raw/0e0a145ded8b1672701dc8b2a702e51c648312d4/unemployment.csv", ({id, rate}) => [id, +rate])), {title: "Unemployment rate (quantile)"})
-Object.assign(new Map(await d3.csv("zctatest.csv", ({id, rate}) => [id, +rate])), {title: "Unemployment rate (quantile)"})
+Object.assign(new Map(await d3.csv("https://gist.githubusercontent.com/mbostock/682b782da9e1448e6eaac00bb3d3cd9d/raw/0e0a145ded8b1672701dc8b2a702e51c648312d4/unemployment.csv", ({id, rate}) => [id, +rate])), {title: "Unemployment rate (quantile)"})
+// CUSTOM
+//Object.assign(new Map(await d3.csv("zctatest.csv", ({id, rate}) => [id, +rate])), {title: "Unemployment rate (quantile)"})
 )})
     },
     {
@@ -100,9 +105,10 @@ d3.scaleSequentialQuantile([...data.values()], t => d3.interpolatePiYG(1 - t))
       name: "us",
       inputs: ["d3"],
       value: (function(d3){return(
-//d3.json("https://cdn.jsdelivr.net/npm/us-atlas@1/us/10m.json")
+d3.json("https://cdn.jsdelivr.net/npm/us-atlas@1/us/10m.json")
 //d3.json("../zcta/zcta_sm.topo.json")
-d3.json("../zcta/states/Georgiatest.topo.json")
+// CUSTOM
+//d3.json("../zcta/states/Georgiatest.topo.json")
 )})
     },
     {
