@@ -1,4 +1,7 @@
-#ZCTA Map
+#Zip Tabulation Area (ZCTA) Map
+
+Our currect work resides at [zeta/basic](basic)  
+Our zcta census data resides at [data/2017](../../data/2017/zcta_out.csv) 
 
 Downloaded 61.5 MB zcta shape file cb_2017_us_zcta510_500k.zip from:  
 https://www.census.gov/geo/maps-data/data/cbf/cbf_zcta.html  
@@ -6,28 +9,29 @@ https://www.census.gov/geo/maps-data/data/cbf/cbf_zcta.html
 Simplify and output as 9 MB topojson for zcta_topo_sm.json:  
 https://mapshaper.org/  
 
-Zips are smaller at 5 MB, include area names. Source: 
+Zips are smaller at 5 MB and include area names. Source: 
 http://bl.ocks.org/jefffriesen/raw/6892860/
 
-
-Embed topojson into GitHub page  
+Embedded topojson preview below using GitHub page mapping  
 https://help.github.com/en/articles/mapping-geojson-files-on-github  
 
 
-Using this for median income - Quantile Choropleth - Nice colors  
+##Resources
+
+Logscale - good for income range
+https://bl.ocks.org/mbostock/4206573
+
+Could us this for median income - Quantile Choropleth - Nice colors  
 https://observablehq.com/@d3/quantile-choropleth
 
 Choropleth  
 https://observablehq.com/@d3/choropleth  
 
-Similar to:  
-http://localhost:8887/HW2-lheyns3/Q6/q6.html 
+Similar to: [HW Q6](../Q6/q6.html)
 
 Bivariate-choropleth - Diabetes and obesity rates by county
 https://observablehq.com/@d3/bivariate-choropleth  
 
-Logscale - good for income range
-https://bl.ocks.org/mbostock/4206573
 
 Conic equal-area projection - State borders bolder
 https://observablehq.com/@d3/u-s-map-canvas  
@@ -35,7 +39,7 @@ https://observablehq.com/@d3/u-s-map-canvas
 
 Zoomable Choropleth - Click from state to county shapes  
 https://bl.ocks.org/cmgiven/d39ec773c4f063a463137748097ff52f  
-
+Added the above at [zoomstate](zoomstate)  
 
 Map to Force-Directed Graph  
 https://bl.ocks.org/cmgiven/4cfa1a95f9b952622280a90138842b79  
