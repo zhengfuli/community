@@ -93,8 +93,8 @@ var svg = d3.select("body")
   svg.call(tip);
 
 
-  d3.json("../zcta_sm.topo.json").then(function(us,error) {
-
+  //d3.json("../zcta_sm.topo.json").then(function(us,error) { // Also use us.objects.zcta below
+  d3.json("../zips_us_topo.json").then(function(us,error) {
 
 
     svg.append("g")
@@ -133,8 +133,9 @@ var svg = d3.select("body")
     svg.append("path")
 
       //.attr("class", "zcta")
-      .datum(topojson.feature(us, us.objects.zcta))
-      
+      //.datum(topojson.feature(us, us.objects.zcta))
+      .datum(topojson.feature(us, us.objects.zip_codes_for_the_usa))
+
       //.attr("d", path)
       //.attr("width", "100%")
       //.attr("height", "100%")

@@ -6,6 +6,10 @@ https://www.census.gov/geo/maps-data/data/cbf/cbf_zcta.html
 Simplify and output as 9 MB topojson for zcta_topo_sm.json:  
 https://mapshaper.org/  
 
+Zips are smaller at 5 MB, include area names. Source: 
+http://bl.ocks.org/jefffriesen/raw/6892860/
+
+
 Embed topojson into GitHub page  
 https://help.github.com/en/articles/mapping-geojson-files-on-github  
 
@@ -21,6 +25,9 @@ http://localhost:8887/HW2-lheyns3/Q6/q6.html
 
 Bivariate-choropleth - Diabetes and obesity rates by county
 https://observablehq.com/@d3/bivariate-choropleth  
+
+Logscale - good for income range
+https://bl.ocks.org/mbostock/4206573
 
 Conic equal-area projection - State borders bolder
 https://observablehq.com/@d3/u-s-map-canvas  

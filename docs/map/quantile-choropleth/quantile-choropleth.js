@@ -14,9 +14,7 @@ md`# Quantile Choropleth
 
 Unemployment rate by county, August 2016. Data: [Bureau of Labor Statistics](http://www.bls.gov/lau/#tables).
 
-
-Search for "CUSTOM" for three place to change to zcta. Copy existing csv files local and add zcta values.
-`
+Search for "CUSTOM" for three place to change to zcta. Copy existing csv files local and add zcta values.`
 )})
     },
     {
