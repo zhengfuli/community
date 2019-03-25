@@ -51,6 +51,39 @@ pathX:hover {
   left: 0;
 }
 
+
+/* On mouse hover, lighten state color */
+path:hover {
+  fill-opacity: .7;
+}
+
+/* Style for Place Tooltip */
+div.tooltip {   
+  position: absolute;           
+  text-align: center;           
+  width: 80px;                  
+  heightX: 28px;
+  overflow: auto;             
+  padding: 2px;             
+  font: 12px sans-serif;        
+  background: white;   
+  border: 0px;      
+  border-radius: 8px;           
+  pointer-events: none;         
+}
+        
+/* Legend Font Style */
+body {
+  font: 11px sans-serif;
+}
+        
+/* Legend Position Style */
+.legend {
+  position:absolute;
+  left:800px;
+  top:350px;
+}
+
 </style>
 </head>
 <body>
@@ -93,6 +126,59 @@ var svg = d3.select("body")
 
   svg.call(tip);
 
+// Append Div for place tooltip (differs from shape tooltip)
+var div = d3.select("body")
+        .append("div")   
+        .attr("class", "tooltip")               
+        .style("opacity", 0);
+
+
+
+
+  function loadPlaces() {
+    // Load Places - Ideally this would occur first. Occurs here so place dots reside above map.
+        // Source: http://bl.ocks.org/michellechandra/raw/0b2ce4923dc9b5809922/a476b9098ba0244718b496697c5b350460d32f99/cities-lived.csv
+        //d3.csv("loctest.csv").then(function(data,error) {
+        d3.csv("places.csv").then(function(data,error) {
+
+          svg.selectAll("circle")
+          .data(data)
+          .enter()
+          .append("circle")
+          .attr("cx", function(d) {
+            return projection([d.lon, d.lat])[0];
+          })
+          .attr("cy", function(d) {
+            return projection([d.lon, d.lat])[1];
+          })
+          .attr("r", function(d) {
+            //return Math.sqrt(d.years) * 4;
+            return Math.sqrt(d.sum_of_tickets_earned) / 2;
+          })
+            .style("fill", "rgb(217,91,67)")  
+            .style("opacity", 0.85) 
+
+          // Modification of custom tooltip code provided by Malcolm Maclean, "D3 Tips and Tricks" 
+          // http://www.d3noob.org/2013/01/adding-tooltips-to-d3js-graph.html
+          .on("mouseover", function(d) {      
+              div.transition()        
+                   .duration(200)      
+                   .style("opacity", .9);      
+                   div.text(d.place)
+                   .style("left", (d3.event.pageX) + "px")     
+                   .style("top", (d3.event.pageY - 28) + "px");    
+          })   
+
+            // fade out tooltip on mouse out               
+            .on("mouseout", function(d) {       
+                div.transition()        
+                   .duration(500)      
+                   .style("opacity", 0);   
+            });
+        });
+      // End Load Places
+  }
+  
 
   //d3.json("../zcta_sm.topo.json").then(function(us,error) { // Also use us.objects.zcta below
   d3.json("../zips_us_topo.json").then(function(us,error) {
@@ -145,50 +231,12 @@ var svg = d3.select("body")
         .attr("d", path)
         .on('mouseover', tip.show)
         .on('mouseout', tip.hide)
-
       ;
-  });
 
-
-  // Source: http://bl.ocks.org/michellechandra/raw/0b2ce4923dc9b5809922/a476b9098ba0244718b496697c5b350460d32f99/cities-lived.csv
-  //d3.csv("loctest.csv").then(function(data,error) {
-  d3.csv("places.csv").then(function(data,error) {
-
-
-  svg.selectAll("circle")
-    .data(data)
-    .enter()
-    .append("circle")
-    .attr("cx", function(d) {
-      return projection([d.lon, d.lat])[0];
-    })
-    .attr("cy", function(d) {
-      return projection([d.lon, d.lat])[1];
-    })
-    .attr("r", function(d) {
-      //return Math.sqrt(d.years) * 4;
-      return Math.sqrt(d.sum_of_tickets_earned) / 2;
-    })
-      .style("fill", "rgb(217,91,67)")  
-      .style("opacity", 0.85) 
-
-    // Modification of custom tooltip code provided by Malcolm Maclean, "D3 Tips and Tricks" 
-    // http://www.d3noob.org/2013/01/adding-tooltips-to-d3js-graph.html
-    .on("mouseover", function(d) {      
-        div.transition()        
-             .duration(200)      
-             .style("opacity", .9);      
-             div.text(d.place)
-             .style("left", (d3.event.pageX) + "px")     
-             .style("top", (d3.event.pageY - 28) + "px");    
-    })   
-
-      // fade out tooltip on mouse out               
-      .on("mouseout", function(d) {       
-          div.transition()        
-             .duration(500)      
-             .style("opacity", 0);   
-      });
+    
+      // Load Places could go here if we can't get map shapes to go to the back.
+      loadPlaces();
+      
   });
 
 </script>
