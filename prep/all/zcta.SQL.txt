@@ -273,7 +273,7 @@ zc.House100to150K, zc.House150to200K, zc.House200Kup;
 
 --convert to csv
 .mode csv
-.output zcta_out.csv
+.output ../../docs/data/2017/zcta_out.csv
 select * from zcta_output;
 .output stdout
 
