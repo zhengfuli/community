@@ -29,9 +29,13 @@ pathX:hover {
   background: rgba(0, 0, 0, 0.8);
   color: #fff;
   border-radius: 2px;
+
+  top:20px !important; /* Locking to top. */
+  opacity: 1 !important;
 }
 
 /* Creates a small triangle extender for the tooltip */
+/*
 .d3-tip:after {
   box-sizing: border-box;
   display: inline;
@@ -43,6 +47,7 @@ pathX:hover {
   position: absolute;
   text-align: center;
 }
+*/
 
 /* Style northward tooltips differently */
 .d3-tip.n:after {
@@ -53,7 +58,7 @@ pathX:hover {
 
 
 /* On mouse hover, lighten state color */
-path:hover {
+pathX:hover {
   fill-opacity: .7;
 }
 
@@ -94,7 +99,7 @@ var tip = d3.tip()
   .attr('class', 'd3-tip')
   .offset([-10, 0])
   .html(function(d) {
-    return "(1) state name, (2) county name, (3) poverty rate, (4) total population, and (5) income per capita";
+    return "[Area Details]";
     //return "<strong>State:</strong> <span style='color:red'>" + d.State + "</span><br><strong>County:</strong> <span style='color:red'>" + d.County + "</span><br><strong>Poverty Rate:</strong> <span style='color:red'>" + d.Poverty + "</span><br><strong>Populaiton:</strong> <span style='color:red'>26932</span><br><strong>Income:</strong> <span style='color:red'>20881</span><br>";
   })
 
@@ -114,7 +119,7 @@ var svg = d3.select("body")
     .attr("viewBox", "0 0 960 500")
 
     .call(d3.zoom().on("zoom", function () {
-            svg.attr("transform", d3.event.transform)
+      svg.attr("transform", d3.event.transform)
     }))
     .append("g");
 
@@ -236,7 +241,7 @@ var div = d3.select("body")
     
       // Load Places could go here if we can't get map shapes to go to the back.
       loadPlaces();
-      
+
   });
 
 </script>
