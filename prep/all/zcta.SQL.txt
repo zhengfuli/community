@@ -7,10 +7,10 @@
 drop table if exists income;
 drop table if exists zipcodes;
 drop table if exists zipcw;
-drop view if exists zc;
-drop view if exists zcta_output;
+drop table if exists zcta_output;
+drop table if exists zc;
 drop table if exists industries;
-
+drop view if exists zcta_industries;
 
 -- ***** ***** ***** ***** ***** ***** ***** ***** ***** ***** --
 
@@ -220,6 +220,14 @@ SELECT COUNT(*) as totalRows FROM income;
 .print '~~~~~'
 
 
+create view zcta_industries
+as 
+select zipcw.zcta, sum(industries.est) JobCount, industries.naics
+from zipcw join industries 
+on zipcw.zip = industries.zip 
+group by zipcw.zcta, industries.naics
+;
+
 UPDATE income SET zcta = CAST(substr(geography,7,5) as decimal);
 
 
@@ -260,16 +268,26 @@ as
 select zc.zcta, zc.HouseCount, zc.HouseMedianIncome, 
 (zc.House0to10K + zc.House10to15K + zc.House15to25K) IncomeUnder25K, 
 (zc.House100to150K + zc.House150to200K + zc.House200Kup) IncomeOver100K,
-sum(industries.est) JobCount, zc.latitude, zc.longitude
+allbiz.JobCount,
+agriculture.JobCount JobsAgriculture,
+artsrec.JobCount JobsArtsRec,
+automotive.JobCount JobsAutomotive,
+construction.JobCount JobsConstruction,
+healthcare.JobCount JobsHealthcare,
+manufacturing.JobCount JobsManufacturing,
+retail.JobCount JobsRetail,
+zc.latitude, zc.longitude
 
 from zc
-left join zipcw on zc.zcta = zipcw.zcta -- one-to-many
-join industries on zipcw.zip = industries.zip and industries.naics="------"
-
-group by zc.zcta, zc.HouseCount, zc.HouseMedianIncome, zc.House0to10K, zc.House10to15K, zc.House15to25K, 
-zc.House100to150K, zc.House150to200K, zc.House200Kup;
-
-
+left join zcta_industries allbiz on zc.zcta = allbiz.zcta and allbiz.naics = "------"
+left join zcta_industries agriculture on zc.zcta = agriculture.zcta and agriculture.naics = "11----"
+left join zcta_industries artsrec on zc.zcta = artsrec.zcta and artsrec.naics = "71----"
+left join zcta_industries automotive on zc.zcta = automotive.zcta and automotive.naics >= "336100" AND automotive.naics < "336200"
+left join zcta_industries construction on zc.zcta = construction.zcta and construction.naics = "23----"
+left join zcta_industries healthcare on zc.zcta = healthcare.zcta and healthcare.naics = "62----"
+left join zcta_industries manufacturing on zc.zcta = manufacturing.zcta and (manufacturing.naics = "31----" OR manufacturing.naics = "32----" OR manufacturing.naics = "33----")
+left join zcta_industries retail on zc.zcta = retail.zcta and (retail.naics = "45----" OR retail.naics = "46----")
+;
 
 --convert to csv
 .mode csv
@@ -290,5 +308,6 @@ drop table if exists zipcw;
 drop table if exists zc;
 drop table if exists zcta_output;
 drop table if exists industries;
+drop view if exists zcta_industries;
 
 
