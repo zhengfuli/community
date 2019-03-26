@@ -4,6 +4,7 @@
 <head>
 	<meta charset='UTF-8'>
 	<link rel="shortcut icon" href="data:image/x-icon;," type="image/x-icon"> 
+	<meta name="robots" content="noindex, nofollow">
 	<title>D3.js Sortable & Responsive Table</title>
 	
 	<!-- CSV reader sample by Mingsong Hu
@@ -148,7 +149,25 @@
     	
 	<P>JSON Reader Project: Display results from this <a href="https://api.datausa.io/api/?show=geo&sumlevel=state&required=avg_wage">DataUSA JSON API</a> in table format.</P>
 
-	<p>[View source to see our efforts]</p>
+	<p>Inspect console to see our efforts. Example of building a table in D3...</p>
+
+<pre>
+d3.text("your.csv", function(data) {
+  var parsedCSV = d3.csv.parseRows(data);
+
+  var container = d3.select("#d3div")
+      .append("table")
+
+      .selectAll("tr")
+          .data(parsedCSV).enter()
+          .append("tr")
+
+      .selectAll("td")
+          .data(function(d) { return d; }).enter()
+          .append("td")
+          .text(function(d) { return d; });
+});
+</pre>
 
 	<p>Basing work on CSV table formater by Mingsong Hu<br>
 	
