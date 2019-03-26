@@ -9,6 +9,12 @@ https://www.census.gov/geo/maps-data/data/cbf/cbf_zcta.html
 Simplify and output as 9 MB topojson for zcta_topo_sm.json:  
 https://mapshaper.org/  
 
+Or use this command to simplify to 6MB
+npx -p mapshaper mapshaper-xl tl_2017_us_zcta510.shp snap -simplify 0.1% -filter-fields ZCTA5CE10 -rename-fields zip=ZCTA5CE10 -o format=topojson zcta_mapshaper.json
+
+Source: https://github.com/elastic/ems-file-service/issues/6
+
+
 Zips are smaller at 5 MB and include area names. Source: 
 http://bl.ocks.org/jefffriesen/raw/6892860/
 
@@ -57,3 +63,8 @@ https://observablehq.com/@jake-low/how-well-does-population-density-predict-u-s-
 
 Cities on the Globe  
 https://bl.ocks.org/curran/115407b42ef85b0758595d05c825b346  
+
+ZCTA to County  
+https://github.com/AdmitHub/us-zcta-counties  
+
+https://evergreen.data.socrata.com/Maps-Statistics/Cartographic-Boundary-Shapefiles-ZIP-Code-Tabulati/jdvb-ng9e

@@ -185,8 +185,14 @@ var div = d3.select("body")
   }
   
 
-  //d3.json("../zcta_sm.topo.json").then(function(us,error) { // Also use us.objects.zcta below
-  d3.json("../zips_us_topo.json").then(function(us,error) {
+  // v7 was generated from the 2018 ZCTAs by elastic. 
+  // v2 was 2000 census - covers more of country, and smaller file, but no longer current.
+  // https://github.com/elastic/ems-file-service/tree/master/data
+  // zcta_sm.topo.json and zcta_xsm.topo.json are from cb_2017_us_zcta510_500k
+
+  //d3.json("../topo/zcta_sm.topo.json").then(function(us,error) { // Also use us.objects.zcta below
+  d3.json("../topo/zips_us_topo.json").then(function(us,error) { // No holes, but not current zcta
+  //d3.json("../topo/usa_zip_codes_v7.topo.json").then(function(us,error) {
 
 
     svg.append("g")
@@ -226,7 +232,7 @@ var div = d3.select("body")
 
       //.attr("class", "zcta")
       //.datum(topojson.feature(us, us.objects.zcta))
-      .datum(topojson.feature(us, us.objects.zip_codes_for_the_usa))
+      .datum(topojson.feature(us, us.objects.data))
 
       //.attr("d", path)
       //.attr("width", "100%")
