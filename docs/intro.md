@@ -8,6 +8,7 @@
 [DataScape Experiments](https://datascape.github.io/graphs)  
 -->
 
+[Home](about/welcome.html)  | 
 [Proposal](https://docs.google.com/document/d/1-Q4Aeu1AdvP-c2iFaccOnaX8MWSOW5my0U__5_8izXQ/)  | 
 [Presentation](about/forecasting/team06slides.pdf)<!--
 https://docs.google.com/presentation/d/1WMd5GCYD-pnKDqdGE6GYtM3M-bjNRXgqVBTCzi7Plmg/edit?ts=5c7af7b9#slide=id.p
