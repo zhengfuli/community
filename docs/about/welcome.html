@@ -1,0 +1,130 @@
+<html><head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>DataScape: Community Forecasting Welcome</title>
+  <link rel="shortcut icon" href="data:image/x-icon;," type="image/x-icon"> 
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="../css/community.css" />
+  <style>
+    body {
+      margin:0px;
+      background: #eee;
+    }
+    .topsection_container {
+      position: absolute;
+      bottom: 40px;
+      width:100%;
+    }
+    .topsection {
+        position: relative;
+        display: flex;
+        align-items: center;
+    }
+    .top_container {
+        position: relative;
+        overflow: hidden;
+        max-width: 380px;
+        box-shadow: 0 2px 1.96px .04px rgba(0,0,0,.3);
+        -moz-box-shadow: 0 2px 1.96px .04px rgba(0,0,0,.3);
+        -webkit-box-shadow: 0 2px 1.96px .04px rgba(0,0,0,.3);
+        margin: 0 auto;
+        background: #fff;
+        border-radius: 5px;
+        padding-top: 34px;
+        padding-bottom: 30px;
+        width: 100%;
+        text-align: center;
+    }
+    .titletxt {
+      margin:0px 0 12px 0;
+      font-size: 38px;
+      display: none;
+    }
+    .txtbox {
+        position: relative;
+        overflow: hidden;
+        outline: none;
+        width: 300px;
+        padding: 0 20px;
+        height: 70px;
+        line-height: 60px;
+        font-size: 24px;
+        color: #777;
+        border: solid 1px #b7b7b7;
+        border-radius: 5px;
+        margin: 0 27px;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+    }
+    .cta2 {
+        position: relative;
+        overflow: hidden;
+        display: block;
+        width: 260px;
+        padding-left: 40px;
+        height: 75px;
+        line-height: 75px;
+        border-radius: 5px;
+        background: #0f5569;
+        font-weight: 500;
+        font-size: 26px;
+        color: #fff;
+        margin: 27px auto 9px;
+        margin-top: 10px;
+        text-align: left;
+        cursor: pointer;
+    }
+    .arrow2 {
+        position: absolute;
+        width: 75px;
+        height: 75px;
+        right: 0;
+        top: 0;
+        background: url(img/continue_sprites.png) -10px -10px;
+    }
+    .disctxt {
+      margin:0 40px 0 40px;
+    }
+    .textcontainer {
+      margin:40px;
+    }
+  </style>
+  <script>
+    function clickedCTA() {
+      window.location="../map/zip/basic";
+    }
+  </script>
+</head>
+
+
+<body>
+  <div style="position:relative; min-height:420px">
+    <img src="img/werks-hero.jpg" style="width:100%; min-height:420px" />
+
+    <div class="topsection_container">
+      <section class="topsection">
+        <div class="top_container">
+          <h2 class="titletxt">Community Forecast</h2>
+          <input type="text" class="txtbox frst_location" id="geolocation" placeholder="Enter Zip Code">
+          <a class="cta2 __install-cta" onclick="clickedCTA();"><strong>CONTINUE</strong><span class="arrow2"></span></a>
+          <div class="disctxt">
+          Disclaimer: <span class="__disclaimer--cta">By clicking the button above, you understand the results are not guarenteed and you agree to abide by <a href="agreement.html">Our Site User Agreement</a>.</span>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <div class="textcontainer">
+
+    <h1>Progress Report</h1>
+
+    <a href="levels">Addressing Persistent Poverty</a><br><br>
+
+    <a href="../map/zip/basic/index.html">Zip Map</a><br><br>
+
+    <a href="../map/index.html">Heatmap</a><br><br>
+  </div>
+
+</body>
+</html>
