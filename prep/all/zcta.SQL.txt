@@ -249,12 +249,13 @@ zctazip.latitude, zctazip.longitude
 
 from zipcw
 left join zipcodes zctazip on zipcw.zcta = zctazip.GEOID -- Get one lat/lon for the zcta
-left join income on zipcw.zcta = income.zcta;
+inner join income on zipcw.zcta = income.zcta -- Inner join omits Virgin Island locations (801-851) which have no income rows (HouseCount, HouseMedianIncome, IncomeUnder25K, IncomeOver100K) and not industry rows. Reduces from 41,814 to 41,780.
 
 --and income.housecount < 1200
 --and income.FamilyMeanIncome < 25000 -- 7155 results, but why just north side of Atlanta?
 --and income.Families0to10K > 30 -- 9354 results
 --and income.zcta >= 30000 and income.zcta < 31000
+;
 
 --reduce decimal places from 4 to 2 on latitude and longitude
 update zc set latitude=round(latitude,2);
