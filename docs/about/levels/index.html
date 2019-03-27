@@ -19,8 +19,9 @@
   </style>
   <script>
 
-  	//loadMarkupPage("README.md", "readmeDiv", "_parent");
-    loadMarkupPage("https://datascape.github.io/community/about/levels/README.md", "readmeDiv", "_parent");
+  	loadMarkupPage("README.md", "readmeDiv", "_parent");
+    // Attempt to avoid "This request has been blocked; the content must be served over HTTPS."
+    //loadMarkupPage("https://datascape.github.io/community/about/levels/README.md", "readmeDiv", "_parent");
 
   	function loadMarkupPage(pagePath, divID, target) {
 	    d3.text(pagePath, function(data) {

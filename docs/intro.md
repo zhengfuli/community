@@ -23,7 +23,7 @@ Displays the most notable attribute in each cluster to narrow preferences.
 
 [GPU.js - Kind of fun to do the impossible](https://hackernoon.com/introducing-gpu-js-gpu-accelerated-javascript-ba11a6069327)  
 
-
+[Three.js for WebGL 2](https://threejs.org/)  
 <!--
 [11 JavaScript Machine Learning Languages](https://blog.bitsrc.io/11-javascript-machine-learning-libraries-to-use-in-your-app-c49772cca46c)  
 
