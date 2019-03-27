@@ -39,6 +39,10 @@ h1 {
     font-weight: 200;
     box-sizing: border-box;
   }
+  .headerRectInterior {
+    max-height: 40px;
+    overflow: hidden;
+  }
   .headerRect:hover {
     background-color: #ddd;
   }
