@@ -347,7 +347,7 @@ HC03_VC109,,Percent; HISPANIC OR LATINO AND RACE - Total housing units
 HC04_VC109,,Percent Margin of Error; HISPANIC OR LATINO AND RACE - Total housing units
 HC01_VC113,,"Estimate; CITIZEN, VOTING AGE POPULATION - Citizen, 18 and over population"
 HC02_VC113,,"Margin of Error; CITIZEN, VOTING AGE POPULATION - Citizen, 18 and over population"
-HC03_VC113,,"Percent; CITIZEN, VOTING AGE POPULATION - Citizen, 18 and over population"
+HC03_VC113,potential_voters,"Percent; CITIZEN, VOTING AGE POPULATION - Citizen, 18 and over population"
 HC04_VC113,,"Percent Margin of Error; CITIZEN, VOTING AGE POPULATION - Citizen, 18 and over population"
 HC01_VC114,,"Estimate; CITIZEN, VOTING AGE POPULATION - Citizen, 18 and over population - Male"
 HC02_VC114,,"Margin of Error; CITIZEN, VOTING AGE POPULATION - Citizen, 18 and over population - Male"
