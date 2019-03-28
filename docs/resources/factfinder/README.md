@@ -1,48 +1,30 @@
 #FactFinder
 
-The following [FactFinder export steps are by Mike Bostock](https://bost.ocks.org/mike/bubble-map/)  
+The following [FactFinder county export steps are by Mike Bostock](https://bost.ocks.org/mike/bubble-map/)  
 
-Better:
-https://acsdatacommunity.prb.org/acs-data-products--resources/american-factfinder/f/3/t/330
+But we used these [zip export steps](https://acsdatacommunity.prb.org/acs-data-products--resources/american-factfinder/f/3/t/330).  
 
-1. Go to factfinder2.census.gov and click "Download Center".  
-2. Find where it says “American Community Survey” and click “get data »”.  
+1. Go to factfinder.census.gov and click "[Advanced Search](https://factfinder.census.gov/faces/nav/jsf/pages/searchresults.xhtml?refresh=t)".  
+2. Under "Geographies" choose "5 Digit ZIP Code Tabulation Area- 860" (ZCTA)  
+3. Click the choice "ALL 5 Digit ZIP Code Tabulation Areas in the United States and Puerto Rico" (This step is not intitive. You won't need to select a state if you've clicked this chice.)  
+4. Click “ADD TO YOUR SELECTIONS” button.  
+5. Click “CLOSE” to dismiss the pop-up.  
+8. With the “Topics” radio button selected, search for terms like "Population Total".  
 
-Click "Advanced Search"
-
-https://factfinder.census.gov/faces/nav/jsf/pages/searchresults.xhtml?refresh=t
-
-Choose
-"5 Digit ZIP Code Tabulation Area- 860" (ZCTA)
-
-
-This step is confusing.  Choose the following:
-
-"ALL 5 Digit ZIP Code Tabulation Areas in the United States and Puerto Rico",
-
-Searched for "Population Total"
-
-
-3. Click the blue “Geographies” button on the left.  
-4. In the pop-up, select “..... County - 050” in the “geographic type” menu.  
-5. Select “All Counties within United States” in the “geographic areas” box.  
-6. Click the “ADD TO YOUR SELECTIONS” button.  
-7. Click “CLOSE” to dismiss the pop-up.  
-8. Click the blue “Topics” button on the left.  
 9. In the pop-up, expand the “People” submenu.  
 
 
-Under geographies choose 5-Digit Zip Code Tabulation Area zcta
-
+<!--
 10. Expand the “Basic Count/Estimate” submenu.  
 11. Click “Population Total”.  
 12. Click “CLOSE” to dismiss the pop-up.  
 13. In the table, click on the most recent ACS 5-year estimate named “TOTAL POPULATION”.  
-14. On the next page, click the “Download” link under “Actions”.  
-15. In the pop-up, click “OK”.  
-16. Wait for it to “build” your file.  
-17. When it’s ready, click “DOWNLOAD”.  
-18. Finally, expand the downloaded zip file (ACS_12_5YR_B01003.zip).  
+-->
+
+10. On the next page, click the “Download” link under “Actions”.  
+11. In the pop-up, click “OK”.  
+12. Wait for it to “build” your file.  
+13. When it’s ready, click “DOWNLOAD”. 
 <br>
 
 ##Add notes here on any custom step you make.  
