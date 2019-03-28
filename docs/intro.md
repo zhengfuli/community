@@ -1,4 +1,4 @@
-#### Machine Learning for 
+#### Machine Learning for
 # Community Forecasting
 
 <!--
@@ -8,8 +8,8 @@
 [DataScape Experiments](https://datascape.github.io/graphs)  
 -->
 
-[Home](about/welcome.html)  | 
-[Proposal](https://docs.google.com/document/d/1-Q4Aeu1AdvP-c2iFaccOnaX8MWSOW5my0U__5_8izXQ/)  | 
+[Home](about/welcome.html)  |
+[Proposal](https://docs.google.com/document/d/1-Q4Aeu1AdvP-c2iFaccOnaX8MWSOW5my0U__5_8izXQ/)  |
 [Presentation](about/forecasting/team06slides.pdf)<!--
 https://docs.google.com/presentation/d/1WMd5GCYD-pnKDqdGE6GYtM3M-bjNRXgqVBTCzi7Plmg/edit?ts=5c7af7b9#slide=id.p
 -->
@@ -25,6 +25,11 @@ Displays the most notable attribute in each cluster to narrow preferences.
 [GPU.js - Kind of fun to do the impossible](https://hackernoon.com/introducing-gpu-js-gpu-accelerated-javascript-ba11a6069327)  
 
 [Three.js for WebGL 2](https://threejs.org/)  
+
+#### Regression
+
+[DIS Ticket Counts vs Household Median Income](regression/index.html)
+
 <!--
 [11 JavaScript Machine Learning Languages](https://blog.bitsrc.io/11-javascript-machine-learning-libraries-to-use-in-your-app-c49772cca46c)  
 
@@ -38,5 +43,5 @@ Displays the most notable attribute in each cluster to narrow preferences.
 <!-- vector autoregression predicts output based on lagged input of other variables -->
 
 <!--
-Flexible Neural Tree (FNT) 
+Flexible Neural Tree (FNT)
 -->
