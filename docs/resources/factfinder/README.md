@@ -2,8 +2,27 @@
 
 The following [FactFinder export steps are by Mike Bostock](https://bost.ocks.org/mike/bubble-map/)  
 
-1. Go to factfinder2.census.gov.  
+Better:
+https://acsdatacommunity.prb.org/acs-data-products--resources/american-factfinder/f/3/t/330
+
+1. Go to factfinder2.census.gov and click "Download Center".  
 2. Find where it says “American Community Survey” and click “get data »”.  
+
+Click "Advanced Search"
+
+https://factfinder.census.gov/faces/nav/jsf/pages/searchresults.xhtml?refresh=t
+
+Choose
+"5 Digit ZIP Code Tabulation Area- 860" (ZCTA)
+
+
+This step is confusing.  Choose the following:
+
+"ALL 5 Digit ZIP Code Tabulation Areas in the United States and Puerto Rico",
+
+Searched for "Population Total"
+
+
 3. Click the blue “Geographies” button on the left.  
 4. In the pop-up, select “..... County - 050” in the “geographic type” menu.  
 5. Select “All Counties within United States” in the “geographic areas” box.  
@@ -11,6 +30,10 @@ The following [FactFinder export steps are by Mike Bostock](https://bost.ocks.or
 7. Click “CLOSE” to dismiss the pop-up.  
 8. Click the blue “Topics” button on the left.  
 9. In the pop-up, expand the “People” submenu.  
+
+
+Under geographies choose 5-Digit Zip Code Tabulation Area zcta
+
 10. Expand the “Basic Count/Estimate” submenu.  
 11. Click “Population Total”.  
 12. Click “CLOSE” to dismiss the pop-up.  
