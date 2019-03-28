@@ -26,6 +26,12 @@ Displays the most notable attribute in each cluster to narrow preferences.
 
 [Three.js for WebGL 2](https://threejs.org/)  
 <!--
+Vega!
+
+Scatterplot Multiple-charts (Matrix) - And zoomable!!
+https://vega.github.io/vega-lite/examples/interactive_splom.html
+
+
 [11 JavaScript Machine Learning Languages](https://blog.bitsrc.io/11-javascript-machine-learning-libraries-to-use-in-your-app-c49772cca46c)  
 
 [Training GANs using Google Colaboratory](https://towardsdatascience.com/training-gans-using-google-colaboratory-f91d4e6f61fe)  
