@@ -6,33 +6,37 @@ But we used these [zip export steps](https://acsdatacommunity.prb.org/acs-data-p
 
 1. Go to factfinder.census.gov and click "[Advanced Search](https://factfinder.census.gov/faces/nav/jsf/pages/searchresults.xhtml?refresh=t)".  
 2. Under "Geographies" choose "5 Digit ZIP Code Tabulation Area- 860" (ZCTA)  
-3. Click the choice "ALL 5 Digit ZIP Code Tabulation Areas in the United States and Puerto Rico" (This step is not intitive. You won't need to select a state if you've clicked this chice.)  
+3. Click the choice "ALL 5 Digit ZIP Code Tabulation Areas in the United States and Puerto Rico" (This step is not intitive. You won't need to select a state if you've clicked this choice.)  
 4. Click “ADD TO YOUR SELECTIONS” button.  
 5. Click “CLOSE” to dismiss the pop-up.  
-8. With the “Topics” radio button selected, search for terms like "Population Total".  
-
-9. In the pop-up, expand the “People” submenu.  
-
+6. With the “Topics” radio button selected, search for terms like "Population Total".  
+[View demographics data selection screenshot](annual/export_screenshot.png) - Probably only need one per year.  
 
 <!--
+7. In the pop-up, expand the “People” submenu.  
 10. Expand the “Basic Count/Estimate” submenu.  
 11. Click “Population Total”.  
 12. Click “CLOSE” to dismiss the pop-up.  
 13. In the table, click on the most recent ACS 5-year estimate named “TOTAL POPULATION”.  
+
+Need to confirm the following...
 -->
 
-10. On the next page, click the “Download” link under “Actions”.  
-11. In the pop-up, click “OK”.  
-12. Wait for it to “build” your file.  
-13. When it’s ready, click “DOWNLOAD”. 
+7. On the next page, click the “Download” link under “Actions”.  
+8. In the pop-up, click “OK”.  
+9. Wait for it to “build” your file.  
+10. When it’s ready, click “DOWNLOAD”.  
+
+
+[View fields used from demographics data](annual/)
 <br>
 
 ##Add notes here on any custom step you make.  
 
 <b>Steps for downloading the income data to build our zcta (zipcode) analysis tool:</b>  
 
-[American Community Survey (ACS) Download Center](https://factfinder.census.gov/faces/nav/jsf/pages/download_center.xhtml)  
-(Screenshots in steps folder.)
+
+<!-- old Screenshots in steps folder-->
 
 <b>Choose one of these (seems to be limit to one download set at a time.)</b>  
 S1901 - Income  
